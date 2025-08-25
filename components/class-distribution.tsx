@@ -9,7 +9,7 @@ const distributionData = [
   { name: "Hepatorenal", count: 187, percentage: 15.0 },
 ]
 
-const COLORS = ["#1d4ed8", "#3b82f6", "#ea580c", "#dc2626"]
+const COLORS = ["#15803d", "#84cc16", "#ea580c", "#dc2626"]
 
 export function ClassDistribution() {
   const chartConfig = {

@@ -4,76 +4,76 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color palette for medical literature classification dashboard */
-  --background: oklch(1 0 0); /* #ffffff - Main background */
-  --foreground: oklch(0.278 0.015 255.395); /* #374151 - Main text color */
-  --card: oklch(0.984 0.024 230.495); /* #f0f9ff - Card background (blue tint) */
-  --card-foreground: oklch(0.278 0.015 255.395); /* #374151 - Card text color */
-  --popover: oklch(1 0 0); /* #ffffff - Popover background */
-  --popover-foreground: oklch(0.278 0.015 255.395); /* #374151 - Popover text color */
-  --primary: oklch(0.506 0.177 230.028); /* #1d4ed8 - Primary actions (medical blue) */
-  --primary-foreground: oklch(1 0 0); /* #ffffff - Primary text */
-  --secondary: oklch(0.748 0.204 230.725); /* #3b82f6 - Accent actions (bright blue) */
-  --secondary-foreground: oklch(0.278 0.015 255.395); /* #374151 - Accent text */
-  --muted: oklch(0.984 0.024 230.495); /* #f0f9ff - Muted backgrounds (blue tint) */
-  --muted-foreground: oklch(0.556 0.014 253.89); /* #6b7280 - Muted text */
-  --accent: oklch(0.748 0.204 230.725); /* #3b82f6 - Highlighted elements */
-  --accent-foreground: oklch(1 0 0); /* #ffffff - Text on accent */
-  --destructive: oklch(0.577 0.245 27.325); /* #dc2626 - Error states */
-  --destructive-foreground: oklch(1 0 0); /* #ffffff - Text on error */
-  --border: oklch(0.922 0.013 247.858); /* #e5e7eb - General borders */
-  --input: oklch(0.984 0.024 230.495); /* #f0f9ff - Input backgrounds (blue tint) */
-  --ring: oklch(0.506 0.177 230.028 / 0.5); /* Focus ring with medical blue */
-  --chart-1: oklch(0.506 0.177 230.028); /* #1d4ed8 - Chart color 1 */
-  --chart-2: oklch(0.748 0.204 230.725); /* #3b82f6 - Chart color 2 */
-  --chart-3: oklch(0.627 0.204 50.75); /* #ea580c - Chart color 3 */
-  --chart-4: oklch(0.577 0.245 27.325); /* #dc2626 - Chart color 4 */
-  --chart-5: oklch(0.701 0.218 60.695); /* #f97316 - Chart color 5 */
-  --radius: 0.5rem; /* Border radius for cards */
-  --sidebar: oklch(0.984 0.024 230.495); /* #f0f9ff - Sidebar background (blue tint) */
-  --sidebar-foreground: oklch(0.278 0.015 255.395); /* #374151 - Sidebar text */
-  --sidebar-primary: oklch(0.506 0.177 230.028); /* #1d4ed8 - Sidebar primary actions */
-  --sidebar-primary-foreground: oklch(1 0 0); /* #ffffff - Sidebar primary text */
-  --sidebar-accent: oklch(0.748 0.204 230.725); /* #3b82f6 - Sidebar accent actions */
-  --sidebar-accent-foreground: oklch(0.278 0.015 255.395); /* #374151 - Sidebar accent text */
-  --sidebar-border: oklch(0.922 0.013 247.858); /* #e5e7eb - Sidebar borders */
-  --sidebar-ring: oklch(0.506 0.177 230.028 / 0.5); /* Sidebar focus ring */
+  /* Updated color palette for soft pastel medical theme */
+  --background: oklch(0.98 0.005 220); /* #fafbfc - Very light blue-gray background */
+  --foreground: oklch(0.25 0.02 220); /* #3f4756 - Dark blue-gray text */
+  --card: oklch(1 0 0); /* #ffffff - Pure white cards */
+  --card-foreground: oklch(0.25 0.02 220); /* #3f4756 - Dark text on cards */
+  --popover: oklch(1 0 0); /* #ffffff - White popover */
+  --popover-foreground: oklch(0.25 0.02 220); /* #3f4756 - Dark popover text */
+  --primary: oklch(0.55 0.12 220); /* #3b82f6 - Soft blue primary */
+  --primary-foreground: oklch(1 0 0); /* #ffffff - White text on primary */
+  --secondary: oklch(0.55 0.1 160); /* #10b981 - Soft teal secondary */
+  --secondary-foreground: oklch(1 0 0); /* #ffffff - White text on secondary */
+  --muted: oklch(0.96 0.01 220); /* #f1f5f9 - Very light blue-gray muted */
+  --muted-foreground: oklch(0.45 0.02 220); /* #64748b - Medium gray text */
+  --accent: oklch(0.55 0.08 180); /* #06b6d4 - Soft cyan accent */
+  --accent-foreground: oklch(1 0 0); /* #ffffff - White text on accent */
+  --destructive: oklch(0.55 0.15 15); /* #ef4444 - Soft red for errors */
+  --destructive-foreground: oklch(1 0 0); /* #ffffff - White text on destructive */
+  --border: oklch(0.92 0.01 220); /* #e2e8f0 - Light border */
+  --input: oklch(1 0 0); /* #ffffff - White input backgrounds */
+  --ring: oklch(0.55 0.12 220 / 0.3); /* Soft blue focus ring */
+  --chart-1: oklch(0.55 0.12 220); /* #3b82f6 - Soft blue chart color */
+  --chart-2: oklch(0.55 0.1 160); /* #10b981 - Soft teal chart color */
+  --chart-3: oklch(0.55 0.08 180); /* #06b6d4 - Soft cyan chart color */
+  --chart-4: oklch(0.65 0.1 280); /* #8b5cf6 - Soft purple chart color */
+  --chart-5: oklch(0.65 0.12 60); /* #f59e0b - Soft amber chart color */
+  --radius: 0.5rem; /* Standard border radius */
+  --sidebar: oklch(1 0 0); /* #ffffff - White sidebar */
+  --sidebar-foreground: oklch(0.25 0.02 220); /* #3f4756 - Dark sidebar text */
+  --sidebar-primary: oklch(0.55 0.12 220); /* #3b82f6 - Soft blue sidebar primary */
+  --sidebar-primary-foreground: oklch(1 0 0); /* #ffffff - White sidebar primary text */
+  --sidebar-accent: oklch(0.55 0.1 160); /* #10b981 - Soft teal sidebar accent */
+  --sidebar-accent-foreground: oklch(1 0 0); /* #ffffff - White sidebar accent text */
+  --sidebar-border: oklch(0.92 0.01 220); /* #e2e8f0 - Light sidebar borders */
+  --sidebar-ring: oklch(0.55 0.12 220 / 0.3); /* Soft blue sidebar focus ring */
 }
 
 .dark {
-  /* Dark mode variants for medical dashboard */
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0.015 255.395);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.648 0.177 230.028); /* Lighter medical blue for dark mode */
-  --primary-foreground: oklch(0.145 0 0);
-  --secondary: oklch(0.748 0.204 230.725);
-  --secondary-foreground: oklch(0.145 0 0);
-  --muted: oklch(0.269 0.015 255.395);
-  --muted-foreground: oklch(0.708 0.014 253.89);
-  --accent: oklch(0.748 0.204 230.725);
-  --accent-foreground: oklch(0.145 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.269 0.015 255.395);
-  --input: oklch(0.269 0.015 255.395);
-  --ring: oklch(0.648 0.177 230.028 / 0.5);
-  --chart-1: oklch(0.648 0.177 230.028);
-  --chart-2: oklch(0.748 0.204 230.725);
-  --chart-3: oklch(0.727 0.204 50.75);
-  --chart-4: oklch(0.677 0.245 27.325);
-  --chart-5: oklch(0.801 0.218 60.695);
-  --sidebar: oklch(0.205 0.015 255.395);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.648 0.177 230.028);
-  --sidebar-primary-foreground: oklch(0.145 0 0);
-  --sidebar-accent: oklch(0.748 0.204 230.725);
-  --sidebar-accent-foreground: oklch(0.145 0 0);
-  --sidebar-border: oklch(0.269 0.015 255.395);
-  --sidebar-ring: oklch(0.648 0.177 230.028 / 0.5);
+  /* Updated dark mode to maintain soft, professional appearance */
+  --background: oklch(0.08 0.01 220); /* #0f172a - Dark blue background */
+  --foreground: oklch(0.92 0.01 220); /* #f1f5f9 - Light text */
+  --card: oklch(0.12 0.01 220); /* #1e293b - Dark blue cards */
+  --card-foreground: oklch(0.92 0.01 220); /* #f1f5f9 - Light card text */
+  --popover: oklch(0.12 0.01 220); /* #1e293b - Dark popover */
+  --popover-foreground: oklch(0.92 0.01 220); /* #f1f5f9 - Light popover text */
+  --primary: oklch(0.65 0.12 220); /* #60a5fa - Lighter blue primary for dark mode */
+  --primary-foreground: oklch(0.08 0.01 220); /* #0f172a - Dark text on primary */
+  --secondary: oklch(0.65 0.1 160); /* #34d399 - Lighter teal secondary */
+  --secondary-foreground: oklch(0.08 0.01 220); /* #0f172a - Dark text on secondary */
+  --muted: oklch(0.15 0.01 220); /* #334155 - Dark muted */
+  --muted-foreground: oklch(0.65 0.01 220); /* #94a3b8 - Light muted text */
+  --accent: oklch(0.65 0.08 180); /* #22d3ee - Lighter cyan accent */
+  --accent-foreground: oklch(0.08 0.01 220); /* #0f172a - Dark text on accent */
+  --destructive: oklch(0.65 0.15 15); /* #f87171 - Lighter red for dark mode */
+  --destructive-foreground: oklch(0.08 0.01 220); /* #0f172a - Dark text on destructive */
+  --border: oklch(0.2 0.01 220); /* #475569 - Dark border */
+  --input: oklch(0.12 0.01 220); /* #1e293b - Dark input backgrounds */
+  --ring: oklch(0.65 0.12 220 / 0.3); /* Light blue focus ring for dark mode */
+  --chart-1: oklch(0.65 0.12 220); /* #60a5fa - Light blue chart color */
+  --chart-2: oklch(0.65 0.1 160); /* #34d399 - Light teal chart color */
+  --chart-3: oklch(0.65 0.08 180); /* #22d3ee - Light cyan chart color */
+  --chart-4: oklch(0.75 0.1 280); /* #a78bfa - Light purple chart color */
+  --chart-5: oklch(0.75 0.12 60); /* #fbbf24 - Light amber chart color */
+  --sidebar: oklch(0.12 0.01 220); /* #1e293b - Dark sidebar */
+  --sidebar-foreground: oklch(0.92 0.01 220); /* #f1f5f9 - Light sidebar text */
+  --sidebar-primary: oklch(0.65 0.12 220); /* #60a5fa - Light blue sidebar primary */
+  --sidebar-primary-foreground: oklch(0.08 0.01 220); /* #0f172a - Dark sidebar primary text */
+  --sidebar-accent: oklch(0.65 0.1 160); /* #34d399 - Light teal sidebar accent */
+  --sidebar-accent-foreground: oklch(0.08 0.01 220); /* #0f172a - Dark sidebar accent text */
+  --sidebar-border: oklch(0.2 0.01 220); /* #475569 - Dark sidebar borders */
+  --sidebar-ring: oklch(0.65 0.12 220 / 0.3); /* Light blue sidebar focus ring */
 }
 
 @theme inline {
@@ -121,5 +121,17 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Removed space texture, using clean professional background */
+  }
+}
+
+/* Removed futuristic glow effects, keeping clean professional styling */
+@layer utilities {
+  .shadow-soft {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-soft-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 }

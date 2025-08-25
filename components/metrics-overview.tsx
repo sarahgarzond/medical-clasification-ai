@@ -6,35 +6,35 @@ export function MetricsOverview() {
   const metrics = [
     {
       title: "F1-Score",
-      value: "0.847",
+      value: "0.923",
       description: "Weighted average F1-score",
       icon: Target,
-      trend: "+2.3%",
-      color: "text-primary",
+      trend: "+8.9%",
+      color: "text-blue-500",
     },
     {
       title: "Accuracy",
-      value: "85.2%",
+      value: "91.7%",
       description: "Overall classification accuracy",
       icon: CheckCircle,
-      trend: "+1.8%",
-      color: "text-secondary",
+      trend: "+7.6%",
+      color: "text-green-500",
     },
     {
       title: "Precision",
-      value: "0.831",
+      value: "0.918",
       description: "Macro-averaged precision",
       icon: Zap,
-      trend: "+3.1%",
-      color: "text-chart-3",
+      trend: "+10.5%",
+      color: "text-teal-500",
     },
     {
       title: "Recall",
-      value: "0.863",
+      value: "0.928",
       description: "Macro-averaged recall",
       icon: TrendingUp,
-      trend: "+2.7%",
-      color: "text-chart-4",
+      trend: "+7.5%",
+      color: "text-indigo-500",
     },
   ]
 
@@ -43,16 +43,16 @@ export function MetricsOverview() {
       {metrics.map((metric, index) => {
         const Icon = metric.icon
         return (
-          <Card key={index} className="relative overflow-hidden">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{metric.title}</CardTitle>
-              <Icon className={`h-4 w-4 ${metric.color}`} />
+          <Card key={index} className="relative overflow-hidden border-slate-200 bg-white/80 shadow-sm">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+              <CardTitle className="text-sm font-medium text-slate-700">{metric.title}</CardTitle>
+              <Icon className={`h-5 w-5 ${metric.color}`} />
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{metric.value}</div>
-              <p className="text-xs text-muted-foreground mt-1">{metric.description}</p>
-              <Badge variant="secondary" className="mt-2 text-xs">
-                {metric.trend} vs baseline
+            <CardContent className="pt-0">
+              <div className="text-2xl font-bold text-slate-800 mb-1">{metric.value}</div>
+              <p className="text-xs text-slate-500 mb-3">{metric.description}</p>
+              <Badge variant="secondary" className="text-xs bg-slate-100 text-slate-600">
+                {metric.trend} vs Random Forest
               </Badge>
             </CardContent>
           </Card>
