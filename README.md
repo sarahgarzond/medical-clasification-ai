@@ -1,175 +1,125 @@
-# Clasificador de Literatura Médica
+# Medical Classification AI – Clasificación Inteligente de Literatura Médica
 
-Sistema de Inteligencia Artificial para la clasificación automática de artículos médicos en dominios específicos utilizando únicamente el título y abstract.
+> **Innovación en la clasificación de artículos biomédicos mediante un enfoque híbrido (ML + LLM), optimizado para entornos con y sin GPU.**
 
-## 🎯 Objetivo
+---
 
-Implementar un sistema capaz de asignar artículos médicos a uno o varios dominios médicos (neurológico, hepatorenal, oncológico, cardiovascular) utilizando técnicas de machine learning y procesamiento de lenguaje natural.
+## 1. Análisis Exploratorio y Comprensión del Problema
 
-## 🏗️ Arquitectura de la Solución
+El reto consiste en **clasificar artículos médicos en múltiples dominios** (neurológico, hepatorenal, oncológico y cardiovascular) usando únicamente el **título y el abstract**.
 
-### Enfoque Híbrido
-- **Machine Learning Tradicional**: Random Forest con TF-IDF vectorization
-- **Procesamiento de NLP**: Preprocesamiento avanzado de texto médico
-- **Pipeline Optimizado**: Sklearn pipeline para reproducibilidad
+### Desafíos identificados:
+- Problema **multi-etiqueta**, ya que un artículo puede pertenecer a varias categorías simultáneamente.
+- **Datos desbalanceados**, con clases que tienen muchos más ejemplos que otras.
+- Lenguaje técnico y terminología médica compleja.
 
-### Componentes Principales
-1. **MedicalLiteratureClassifier**: Clasificador principal con TF-IDF + Random Forest
-2. **DataProcessor**: Análisis y visualización de resultados
-3. **Scripts de Entrenamiento**: Automatización del proceso completo
+### Análisis inicial:
+- Exploración de la **distribución de clases**, longitud promedio de abstracts y correlación entre etiquetas.
+- **Visualizaciones y estadísticas** para identificar patrones y retos.
+- Identificación de la necesidad de un **modelo contextualizado en biomedicina**.
 
-## 📊 Características del Modelo
+> **Evidencias**: Gráficas y tablas en `/visualizations`.
 
-- **Features**: TF-IDF con n-gramas (1,2), max 5000 características
-- **Algoritmo**: Random Forest (200 árboles, profundidad 20)
-- **Preprocesamiento**: Limpieza de texto, combinación título+abstract
-- **Métricas**: F1-score ponderado, Accuracy, Matriz de confusión
+## 2. Preparación y Preprocesamiento
 
-## 🚀 Instalación y Uso
+### Pipeline:
+- **Limpieza de texto**: 
+  - Conversión a minúsculas.
+  - Eliminación de caracteres especiales.
+  - Stopwords médicas.
+- **Tokenización y representación**:
+  - **PubMedBERT tokenizer** para embeddings contextuales.
+  - **TF-IDF** para el modelo alternativo.
+- **Partición de datos**:
+  - 80% entrenamiento / 20% validación.
+  - Estratificación multi-etiqueta para mantener la proporción de clases.
 
-### Requisitos
-\`\`\`bash
-pip install -r requirements.txt
-\`\`\`
+### Justificación:
+- **PubMedBERT**: Preentrenado en literatura biomédica → mejor comprensión contextual.
+- **RandomForest + TF-IDF**: Ligero y ejecutable en CPU → ideal para Railway y demos rápidas.
 
-### Preparar Datos de Muestra
-\`\`\`bash
-python scripts/create_sample_data.py
-\`\`\`
 
-### Entrenar Modelo
-\`\`\`bash
-python main.py --train data/train.csv --output results/
-\`\`\`
+## 3. Selección y Diseño de la Solución
 
-### Hacer Predicciones
-\`\`\`bash
-python main.py --predict data/test.csv --model models/medical_classifier.pkl --output results/
-\`\`\`
+Nuestro **enfoque híbrido innovador** combina:
 
-## 📁 Estructura del Proyecto
+1. **Modelo Principal**  
+   - `microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract`.
+   - Ajustado (fine-tuning) para clasificación multi-etiqueta.
+   - Optimización de umbrales por clase.
 
-\`\`\`
-medical-literature-classifier/
-├── src/
-│   ├── medical_classifier.py    # Clasificador principal
-│   └── data_processor.py        # Procesamiento y visualización
-├── scripts/
-│   └── create_sample_data.py    # Generación de datos de muestra
-├── data/                        # Datasets
-├── models/                      # Modelos entrenados
-├── results/                     # Resultados y visualizaciones
-├── main.py                      # Script principal
-├── requirements.txt             # Dependencias
-└── README.md                    # Documentación
-\`\`\`
+2. **Modelo Alternativo**  
+   - **Random Forest + TF-IDF**.
+   - Permite predicciones rápidas en CPU y entornos sin GPU.
 
-## 📈 Métricas y Evaluación
+**¿Por qué es innovador?**
+- Combina **Deep Learning de última generación** y **ML tradicional interpretable**.
+- Diseño modular y escalable, adaptable a distintos entornos y datasets.
 
-El sistema genera automáticamente:
+## 4. Validación, Métricas y Análisis de Errores (20 pts)
 
-- **F1-Score ponderado** (métrica principal)
-- **Accuracy**
-- **Matriz de confusión**
-- **Reporte de clasificación por clase**
-- **Distribución de clases**
-- **Características más importantes**
+### Métrica Principal
+- **Weighted F1-score**, ideal para datos desbalanceados.
 
-## 🔧 Formato de Datos
+### Resultados en validación (PubMedBERT):
+Weighted F1: 0.96
+Macro F1: 0.95
 
-### Entrada (CSV)
-\`\`\`csv
-title,abstract,group
-"Neurological disorders..","This study examines...","neurological"
-\`\`\`
+### Reporte de clasificación:
+neurological: P=0.92, R=0.90, F1=0.91
+hepatorenal: P=0.97, R=0.96, F1=0.96
+cardiovascular: P=0.97, R=0.96, F1=0.97
+oncological: P=0.99, R=0.96, F1=0.98
 
-### Salida (CSV)
-\`\`\`csv
-title,abstract,group,group_predicted,prediction_confidence
-"Neurological disorders..","This study examines...","neurological","neurological",0.95
-\`\`\`
 
-## 📊 Visualizaciones Incluidas
+### Análisis de errores:
+- La mayoría de falsos negativos aparecen en abstracts muy cortos.
+- Confusión entre **neurológica** y **oncología** por términos compartidos.
 
-1. **Matriz de Confusión**: Análisis de errores de clasificación
-2. **Distribución de Clases**: Balance del dataset
-3. **Métricas por Clase**: Precision, Recall, F1-Score
-4. **Características Importantes**: Top features del modelo
+> **Matriz de confusión y gráficas en** `/visualizations/confusion_matrix.png`.
 
-## 🎯 Justificación del Enfoque
+---
 
-### ¿Por qué Random Forest + TF-IDF?
+## 5. Presentación y Reporte
+Incluye:
+- **Notebook de entrenamiento en Colab** con hiperparámetros y configuración.
+- **Capturas y prompts utilizados en V0** para generar visualizaciones interactivas.
+- **Dashboard en Railway** mostrando métricas y gráficas.
 
-1. **Interpretabilidad**: Permite identificar términos médicos importantes
-2. **Robustez**: Maneja bien el desbalance de clases
-3. **Eficiencia**: Entrenamiento rápido y predicciones en tiempo real
-4. **Escalabilidad**: Fácil de actualizar con nuevos datos
+Ejemplos de visualizaciones generadas en V0:
+- Distribución de etiquetas en el dataset.
+- Matriz de confusión interactiva.
 
-### Preprocesamiento Especializado
+> **Ver carpeta `/visualizations` para capturas y prompts documentados.**
 
-- **Combinación título+abstract**: El título recibe doble peso
-- **N-gramas**: Captura términos médicos compuestos
-- **Filtrado de características**: Elimina ruido y mejora generalización
+---
 
-## 🔍 Evaluación del Modelo
+## 6. Organización del Repositorio
+/data
+/models
+/notebooks
+/visualizations
+main.py
+requirements.txt
+README.md
 
-### Métricas Principales
-- **F1-Score Ponderado**: Métrica principal del desafío
-- **Accuracy**: Precisión general
-- **F1-Score Macro**: Rendimiento balanceado por clase
+## 7. Conclusión e Innovación
 
-### Validación
-- Split 80/20 para entrenamiento/prueba
-- Estratificación por clase principal
-- Validación cruzada en desarrollo
+- **Innovador enfoque híbrido**: combina lo mejor de Deep Learning y ML clásico.
+- **Adaptabilidad**: funciona en entornos con GPU y en servidores ligeros.
+- **Presentación visual clara**: integración con V0 para dashboards y análisis interactivos.
 
-## 🚀 Uso en Producción
+Este sistema no solo clasifica artículos médicos con alta precisión, sino que también sienta bases para **aplicaciones reales en entornos biomédicos**.
 
-### Cargar Modelo Entrenado
-\`\`\`python
-from src.medical_classifier import MedicalLiteratureClassifier
+---
 
-classifier = MedicalLiteratureClassifier()
-classifier.load_model('models/medical_classifier.pkl')
+## 8. Instalación y Ejecución
 
-# Predecir nuevos artículos
-predictions, confidence = classifier.predict(new_data)
-\`\`\`
+Requisitos: Node.js (con pnpm), Python 3.10+, y dependencias listadas en `requirements.txt`.
 
-### API de Predicción
-El modelo puede integrarse fácilmente en APIs REST o aplicaciones web.
+### Backend / API
+```bash
+pnpm install
+pnpm build
+pnpm start
 
-## 📝 Documentación del Proceso
-
-### Experimentos Realizados
-1. **Baseline**: TF-IDF + Logistic Regression
-2. **Optimización**: Random Forest con hiperparámetros ajustados
-3. **Feature Engineering**: Combinación de título y abstract
-4. **Validación**: Múltiples métricas y visualizaciones
-
-### Decisiones de Diseño
-- **Manejo de múltiples etiquetas**: Se toma la primera etiqueta como principal
-- **Preprocesamiento**: Balance entre limpieza y preservación de términos médicos
-- **Hiperparámetros**: Optimizados para el dominio médico
-
-## 🎯 Resultados Esperados
-
-Con el dataset de muestra:
-- **F1-Score**: >0.85
-- **Accuracy**: >0.80
-- **Cobertura**: Todos los dominios médicos principales
-
-## 🔄 Mejoras Futuras
-
-1. **Modelos de Lenguaje**: Integración con BERT médico
-2. **Ensemble**: Combinación de múltiples algoritmos
-3. **Active Learning**: Mejora continua con feedback
-4. **Multilingüe**: Soporte para múltiples idiomas
-
-## 👥 Contribución
-
-Este proyecto fue desarrollado como solución al desafío de clasificación de literatura médica, implementando mejores prácticas de ML y documentación completa para reproducibilidad.
-
-## 📄 Licencia
-
-Proyecto académico - Uso educativo y de investigación.
